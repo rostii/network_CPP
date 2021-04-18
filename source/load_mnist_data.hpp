@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 #include <string>
+#include <vector>
 #include <iostream>
 
-void load_mnist_data(std::string file_path);
+std::vector<std::vector<u_char>> load_mnist_data(std::string file_path);
 
 #endif /* load_mnist_data_hpp */
