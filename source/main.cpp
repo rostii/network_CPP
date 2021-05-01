@@ -25,7 +25,7 @@ int main()
     vector<int> nodes{784, 30, 10};
     Network ai(nodes);
     
-    ai.train(train_data, 10, 30, 1., test_data);
+    ai.train(train_data, 10, 30, 3., test_data);
     
     
     return EXIT_SUCCESS;
