@@ -6,9 +6,9 @@
 #include <vector>
 #include <tuple>
 
-using datastream_t = std::vector<u_char>;
+using datastream_t = std::vector<unsigned char>;
 using dataimage_t = std::vector<double>;
-using datalabel_t = std::vector<u_char>;
+using datalabel_t = std::vector<unsigned char>;
 using datapoint_t = std::tuple<dataimage_t, datalabel_t>;
 using dataset_t = std::vector<datapoint_t>;
 

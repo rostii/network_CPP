@@ -229,7 +229,7 @@ double Network::activate_derivative(double value)
     return activate(value) * (1 - activate(value));
 }
 
-double Network::cost_derivativ(u_char label, double activation)
+double Network::cost_derivativ(unsigned char label, double activation)
 {
     return activation - label;
 }

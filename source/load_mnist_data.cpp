@@ -49,60 +49,60 @@ vector<dataimage_t> load_image_data(const string& file_path)
         throw;
     }
     
-    u_char type_of_data = data[2];
+    unsigned char type_of_data = data[2];
     if (type_of_data != 0x08) {
         cerr << "[ERROR] Wrong data type. Expected unsigned byte.\n";
         throw;
     }
-    
+
     int numb_dims = data[3];
     if (numb_dims != 3) {
         cerr << "[ERROR] Wrong data dimension. Expected 3 dimensions for image data.\n";
         throw;
     }
-    
+
     vector<int> dims;
     for (int i = 0; i < numb_dims; i++) {
         int value = (data[i * 4 + 4] << 24) | (data[i * 4 + 5] << 16) | (data[i * 4 + 6] << 8) | data[i * 4 + 7];
         dims.push_back(value);
     }
-    
+
     vector<dataimage_t> loaded_image_data;
     int numb_images = dims[0];
     int image_size = dims[1] * dims[2];
-    
+
     if (data.size() < 16 + numb_images * image_size) {
         cerr << "[ERROR] Data do not contain all stated images.\n";
         throw;
     }
-    
+
     for (int i = 0; i < numb_images; ++i) {
         dataimage_t temp_img;
         for (int j = 0; j < image_size; ++j) {
-            temp_img.push_back(static_cast<double>(data[16 + image_size * i + j]) / 255. );
+            temp_img.push_back(static_cast<double>(data[16 + image_size * i + j]) / 255.);
         }
         loaded_image_data.push_back(temp_img);
     }
-    
+
     return loaded_image_data;
 }
 
 vector<datalabel_t> load_label_data(const string& file_path)
 {
     datastream_t data = read_from_file(file_path);
-    
+
     int magic_number_first_second = (data[0] << 8) | data[1];
     if (magic_number_first_second != 0) {
         cerr << "[ERROR] corrupt data.";
         throw;
     }
-    
-    u_char type_of_data = data[2];
+
+    unsigned char type_of_data = data[2];
     if (type_of_data != 0x08) {
         cerr << "[ERROR] Wrong data type. Expected unsigned byte.\n";
         throw;
     }
-    
+
     int numb_dims = data[3];
     if (numb_dims != 1) {
         cerr << "[ERROR] Wrong data dimension. Expected 1 dimension for label data.\n";
@@ -120,7 +120,7 @@ vector<datalabel_t> load_label_data(const string& file_path)
 
     for (int i = 0; i < numb_labels; ++i) {
         datalabel_t temp_labels(10, 0);
-        u_char temp_label = data[8 + i];
+        unsigned char temp_label = data[8 + i];
         temp_labels[temp_label] = 1;
         loaded_label_data.push_back(temp_labels);
     }

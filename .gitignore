@@ -2,3 +2,8 @@ assets
 Build
 DNN_CPP.xcodeproj
 DNN_CPP.xcodeproj/*
+.vs
+*.sln
+*.vcxproj
+*.vcxproj.*
+*.props

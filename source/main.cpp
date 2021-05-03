@@ -27,6 +27,5 @@ int main()
     
     ai.train(train_data, 10, 30, 3., test_data);
     
-    
     return EXIT_SUCCESS;
 }

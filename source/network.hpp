@@ -32,7 +32,7 @@ private:
     void update_parameter(const network_t& nabla, double learn_rate, size_t batch_size);
     double activate(double value);
     double activate_derivative(double value);
-    double cost_derivativ(u_char label, double activation);
+    double cost_derivativ(unsigned char label, double activation);
     int evaluate(const dataset_t& data);
 };
 
